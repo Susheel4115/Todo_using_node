@@ -15,7 +15,7 @@ app.listen(port, () => {
 });
 
 // GET METHOD
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   TodoTask.find({}, (err, tasks) => {
     res.render("todo.ejs", { todoTasks: tasks });
   });

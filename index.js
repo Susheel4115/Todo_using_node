@@ -28,9 +28,9 @@ app.post("/", async (req, res) => {
   console.log(todoTask);
   try {
     await todoTask.save();
-    res.redirect("/");
+    res.redirect("/home");
   } catch (err) {
-    res.redirect("/");
+    res.redirect("/home");
   }
 });
 
@@ -47,7 +47,7 @@ app
     const id = req.params.id;
     TodoTask.findByIdAndUpdate(id, { content: req.body.content }, (err) => {
       if (err) return res.send(500, err);
-      res.redirect("/");
+      res.redirect("/home");
     });
   });
 
@@ -56,6 +56,6 @@ app.route("/remove/:id").get((req, res) => {
   const id = req.params.id;
   TodoTask.findByIdAndRemove(id, (err) => {
     if (err) return res.send(500, err);
-    res.redirect("/");
+    res.redirect("/home");
   });
 });
